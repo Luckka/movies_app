@@ -1,8 +1,6 @@
-
 import 'package:flutter/cupertino.dart';
-import 'package:presenter/dependencies/dependencies.dart';
-
 class FavoriteController {
-  
-  ValueNotifier<MovieDetailDto?> moviesDto = ValueNotifier<MovieDetailDto?>(null);
+  ValueNotifier<bool> isFavorite$ = ValueNotifier<bool>(false);
+  bool get isFavorite => isFavorite$.value;
+  void toggleFavorite() => isFavorite$.value = !isFavorite$.value;
 }

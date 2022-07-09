@@ -6,10 +6,12 @@ import '../../details/screens/details_page.dart';
 
 class CustomListCardWidget extends StatefulWidget {
   final MovieDetailDto movie;
+  final FavoriteController controller;
 
   const CustomListCardWidget({
     Key? key,
     required this.movie,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -17,13 +19,6 @@ class CustomListCardWidget extends StatefulWidget {
 }
 
 class _CustomListCardWidgetState extends State<CustomListCardWidget> {
-  late final FavoriteController favoriteController;
-  @override
-  void initState() {
-    super.initState();
-    favoriteController = Modular.get<FavoriteController>();
-    favoriteController.moviesDto = ValueNotifier<MovieDetailDto?>(widget.movie);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,15 +73,13 @@ class _CustomListCardWidgetState extends State<CustomListCardWidget> {
               )),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: ValueListenableBuilder<MovieDetailDto?>(
-                  valueListenable: favoriteController.moviesDto,
-                  builder: (_, movie, __) {
+                child: ValueListenableBuilder<bool>(
+                  valueListenable: widget.controller.isFavorite$,
+                  builder: (_, isFavorite, __) {
                     return IconButton(
-                        onPressed: () {
-                          favoriteController.moviesDto.value!.toggleFavorite();
-                        },
+                        onPressed: widget.controller.toggleFavorite,
                         icon: Icon(
-                          movie!.isFavorite
+                          widget.controller.isFavorite
                               ? Icons.favorite
                               : Icons.favorite_border,
                           color: Colors.red,
