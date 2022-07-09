@@ -1,11 +1,7 @@
-# ESAQ
+# MoviesApp
 
-Speed test for internet app.
 
-## Template
-
-!!!> Figma: <https://figma.com>
-
+clean arch movie app
 ## Project architecture
 
     project
@@ -48,13 +44,7 @@ Speed test for internet app.
 
 ![Estrutura de uma feature](img/features.png)
 
-## Developed by
-
-    Cleartech
-
 ### Developers
 
-    > Itamar __Project Manager__
-    > Arthur __Senior Mobile Engineer__
-    > Jonatas Santos __Senior Mobile architect__
-    > Robson __Senior Flutter Developer__
+    > Lucka
+    > André
